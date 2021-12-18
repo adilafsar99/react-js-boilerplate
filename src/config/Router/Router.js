@@ -1,6 +1,7 @@
 import {
   Signup,
   Login,
+  Home
 } from "../../containers";
 import {
   BrowserRouter as Router,
@@ -54,14 +55,13 @@ function PublicRoute( {
         <Component />
       ): (
         <Redirect
-          to={location.state && location.state.from ? location.state.from: "/profile"}
+          to={location.state && location.state.from ? location.state.from: "/home"}
           />
       )
       }
       />
   );
 }
-
 
 function AppRouter() {
   const [isAuth,
@@ -80,11 +80,10 @@ function AppRouter() {
             <Switch>
                 <PublicRoute auth={isAuth} exact path="/" component={Login} />
                 <PublicRoute auth={isAuth} exact path="/signup" component={Signup} />
+                <PrivateRoute auth={isAuth} exact path="/home" component={Home} />
             </Switch>
         </Router>
   )
 }
 
-export {
-  AppRouter
-};
+export default AppRouter;

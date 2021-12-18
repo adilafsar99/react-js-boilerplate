@@ -1,4 +1,4 @@
-import {AppRouter} from "./config/Router/Router.js";
+import AppRouter from "./config/Router/Router.js";
 import Context from "./context";
 
 function App() {
